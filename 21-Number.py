@@ -6,11 +6,19 @@ def nearest_multiple(num):
         return num + (4 - (num % 4))
     return 4
 
-# Termina el juego con un mensaje de derrota
+# Termina el juego con un mensaje de derrota y da la opción de reiniciar
 def lose():
     print("\n\n¡HAS PERDIDO!")
     print("¡Mejor suerte la próxima vez!")
-    return False
+    while True:
+        restart = input("¿Quieres reiniciar el juego? (si / no): ").strip().lower()
+        if restart == "si":
+            return True  # Reinicia el juego
+        elif restart == "no":
+            print("Saliendo del juego...")
+            return False  # Sale del juego
+        else:
+            print("Opción no válida. Por favor, ingresa 'si' o 'no'.")
 
 # Verifica si los números son consecutivos
 def check_consecutive(sequence):
@@ -102,15 +110,15 @@ def start_game():
 def main():
     while True:
         print("El jugador 2 es la computadora.")
-        print("¿Quieres jugar al juego del número 21? (Sí / No)")
+        print("¿Quieres jugar al juego del número 21? (si / no)")
         ans = input("> ").strip().lower()
-        if ans == "sí":
+        if ans == "si":
             if not start_game():
                 break
         elif ans == "no":
-            print("¿Quieres salir del juego? (sí / no)")
+            print("¿Quieres salir del juego? (si / no)")
             nex = input("> ").strip().lower()
-            if nex == "sí":
+            if nex == "si":
                 print("Estás saliendo del juego...")
                 break
             elif nex == "no":
