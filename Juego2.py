@@ -2,15 +2,15 @@
 import random
 
 # Obtener nombre del usuario y saludar
-name = input("¿Cual es tu nombre? ")
-print("¡Buena Suerte! ", name)
+name = input("\n¿Cual es tu nombre? ")
+print("\n¡Buena Suerte! ", name)
 
 # Lista de palabras y elegir una al azar
 words = ['python', 'java', 'html', 'jugador', 'programador', 'computadora', 'teclado', 'raton', 'pantalla', 'agua', 'luz', 'sombra', 'cielo', 'tierra', 'mar', 'viento', 'fuego', 'nube', 'estrella', 'luna']
 word = random.choice(words)
 
 # El usuario deve adivinar la palabra
-print("Adivina la palabra: (escribelo en minúsculas)")
+print("\n\nAdivina la palabra: (escribelo en minúsculas)")
 
 # Inicializar variables y turnos
 guesses = ''
@@ -25,25 +25,27 @@ while turns > 0:
         if char in guesses:
             print(char, end=' ')
         else:
-            print("_")
+            print("\n_")
             failed += 1
 
     # Si no quedan caracteres por adivinar, el usuario gana
     if failed == 0:
-        print("Haz Ganado!!!")
-        print("The word is: ", word)
+        print("\n")
+        print("\nHaz Ganado!!!")
+        print("\nLa palara es: ", word)
+        print("\n")
         break
 
     # Pedir al usuario que adivine un caracter
-    guess = input("Adivina la palabra: ")
+    guess = input("\nAdivina la palabra: ")
     guesses += guess
 
     # Comprobar si el caracter no esta en la palabra
     if guess not in word:
         turns -= 1
-        print("Incorrecta")
-        print("Te quedan", + turns, 'más intentos')
+        print("\nIncorrecta")
+        print("\nTe quedan", + turns, 'intentos')
 
     # Comprobar si el usuario ha agotado los turnos
     if turns == 0:
-        print("Haz perdido :(")
+        print("\nHaz perdido :(")
