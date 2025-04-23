@@ -40,7 +40,7 @@ while turns > 0:
     # Si no quedan caracteres por adivinar, el usuario gana
     if failed == 0:
         print("\n")
-        print("\nHás Ganado!!!")
+        print("\nHas Ganado!!!")
         print("\nLa palara es: ", word)
         print("\n")
         break
@@ -57,4 +57,4 @@ while turns > 0:
 
     # Comprobar si el usuario ha agotado los turnos
     if turns == 0:
-        print("\nHás perdido :(")
+        print("\nHas perdido :(")
