@@ -42,7 +42,6 @@ while turns > 0:
         print("\n")
         print("\nHas Ganado!!!")
         print("\nLa palara es: ", word)
-        print("\n")
         break
 
     # Pedir al usuario que adivine un caracter
@@ -58,3 +57,11 @@ while turns > 0:
     # Comprobar si el usuario ha agotado los turnos
     if turns == 0:
         print("\nHas perdido :(")
+        print("\nLa palabra era: ", word)
+        break
+# Fin del juego
+print("\nFin del juego")
+print("\nGracias por jugar")
+print("\nHasta la proxima")
+print("\n :)")
+print("\n")
