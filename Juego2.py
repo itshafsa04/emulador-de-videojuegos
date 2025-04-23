@@ -6,7 +6,16 @@ name = input("\n¿Cual es tu nombre? ")
 print("\n¡Buena Suerte! ", name)
 
 # Lista de palabras y elegir una al azar
-words = ['python', 'java', 'html', 'jugador', 'programador', 'computadora', 'teclado', 'raton', 'pantalla', 'agua', 'luz', 'sombra', 'cielo', 'tierra', 'mar', 'viento', 'fuego', 'nube', 'estrella', 'luna']
+words = ['python', 'java', 'html', 'jugador', 'programador', 'computadora', 'teclado', 'raton', 'pantalla', 'agua', 'luz',
+        'sombra', 'cielo', 'tierra', 'mar', 'viento', 'fuego', 'nube', 'estrella', 'luna', 'sol', 'planeta', 'galaxia', 
+        'universo', 'cosmos', 'espacio', 'tiempo', 'historia', 'ciencia', 'arte', 'musica', 'danza', 'teatro', 'cine', 
+        'literatura', 'poesia', 'filosofia', 'matematica', 'geografia', 'biologia', 'quimica', 'fisica', 'verano', 'invierno', 
+        'primavera', 'otoño', 'calor', 'frio', 'lluvia', 'nieve', 'viento', 'tormenta', 'relampago', 'trueno', 'rayo', 'nube', 
+        'cielo', 'estrella', 'luna', 'sol', 'planeta', 'galaxia', 'universo', 'cosmos', 'inteligencia', 'artificial', 'robot', 
+        'computadora', 'tecnologia', 'internet', 'redes', 'sociales', 'comunicacion', 'informacion', 'datos', 'programacion', 
+        'software', 'hardware', 'sistema', 'red', 'servidor', 'cliente', 'nube', 'almacenamiento', 'seguridad', 'ciberseguridad', 
+        'hackeo', 'virus', 'malware', 'phishing', 'spam', 'firewall', 'antivirus', 'encriptacion', 'autenticacion', 'contraseña']
+
 word = random.choice(words)
 
 # El usuario deve adivinar la palabra
