@@ -80,6 +80,8 @@ def iniciar_juego():
         else:
             print("\nPor favor, responde con 'si' o 'no'.")
 
+
+if __name__ == "__main__":
 # Iniciar el juego por primera vez
-iniciar_juego()
+    iniciar_juego()
 # Fin del juego
