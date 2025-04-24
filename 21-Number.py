@@ -40,9 +40,9 @@ def get_valid_input(prompt, min_val, max_val):
             print("Entrada no válida. Por favor, ingresa un número entero.")
 
 # Maneja el turno del jugador
-def player_turn(sequence, last):
-    print("\nTu turno.")
-    num_count = get_valid_input("¿Cuántos números deseas ingresar? (1-3): ", 1, 3)
+def player_turn(sequence, last, player_name):
+    print(f"\nTurno de {player_name}.")
+    num_count = get_valid_input(f"{player_name}, ¿cuántos números deseas ingresar? (1-3): ", 1, 3)
     print("Ahora ingresa los valores:")
     for _ in range(num_count):
         value = get_valid_input("> ", last + 1, last + 3)
@@ -59,8 +59,8 @@ def computer_turn(sequence, last, comp_count):
     print(sequence)
     return sequence, last
 
-# Inicia el juego
-def start_game():
+# Juego contra la computadora
+def start_game_vs_computer():
     sequence = []
     last = 0
     while True:
@@ -72,7 +72,7 @@ def start_game():
             while True:
                 if last == 20:
                     return lose()
-                sequence, last = player_turn(sequence, last)
+                sequence, last = player_turn(sequence, last, "Jugador")
                 if not check_consecutive(sequence):
                     print("\nNo ingresaste números consecutivos.")
                     return lose()
@@ -91,7 +91,7 @@ def start_game():
                 sequence, last = computer_turn(sequence, last, comp_count)
                 if last == 20:
                     return lose()
-                sequence, last = player_turn(sequence, last)
+                sequence, last = player_turn(sequence, last, "Jugador")
                 if not check_consecutive(sequence):
                     print("\nNo ingresaste números consecutivos.")
                     return lose()
@@ -106,27 +106,43 @@ def start_game():
         else:
             print("Opción no válida. Por favor, ingresa 'F' o 'S'.")
 
+# Juego entre dos jugadores
+def start_game_vs_player():
+    sequence = []
+    last = 0
+    player1 = input("Ingresa el nombre del Jugador 1: ").strip()
+    player2 = input("Ingresa el nombre del Jugador 2: ").strip()
+    current_player = player1
+
+    while True:
+        print(f"\nTurno de {current_player}.")
+        sequence, last = player_turn(sequence, last, current_player)
+        if not check_consecutive(sequence):
+            print(f"\n{current_player}, no ingresaste números consecutivos.")
+            print(f"¡{current_player} ha perdido!")
+            return lose()
+        if last == 21:
+            print(f"\n{current_player} dijo '21'.")
+            print(f"¡{current_player} ha perdido!")
+            return lose()
+        current_player = player1 if current_player == player2 else player2
+
 # Bucle principal del juego
 def main():
     while True:
-        print("El jugador 2 es la computadora.")
-        print("¿Quieres jugar al juego del número 21? (si / no)")
-        ans = input("> ").strip().lower()
-        if ans == "si":
-            if not start_game():
+        print("Selecciona el modo de juego:")
+        print("1. Jugar contra la computadora")
+        print("2. Jugar entre dos personas")
+        mode = input("> ").strip()
+
+        if mode == "1":
+            if not start_game_vs_computer():
                 break
-        elif ans == "no":
-            print("¿Quieres salir del juego? (si / no)")
-            nex = input("> ").strip().lower()
-            if nex == "si":
-                print("Estás saliendo del juego...")
+        elif mode == "2":
+            if not start_game_vs_player():
                 break
-            elif nex == "no":
-                print("Continuando...")
-            else:
-                print("Opción no válida.")
         else:
-            print("Opción no válida.")
+            print("Opción no válida. Por favor, selecciona '1' o '2'.")
 
 if __name__ == "__main__":
     main()
