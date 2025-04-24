@@ -19,7 +19,7 @@ words = ['python', 'java', 'html', 'jugador', 'programador', 'computadora', 'tec
 word = random.choice(words)
 
 # El usuario deve adivinar la palabra
-print("\n\nAdivina la palabra: (escribelo en minúsculas)")
+print("\n\nAdivina la palabra: (escribe la letra en minúsculas)")
 
 # Inicializar variables y turnos
 guesses = ''
