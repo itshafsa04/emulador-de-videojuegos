@@ -22,10 +22,10 @@ def main_menu():
             from wordguessing import iniciar_juego as wordguessing_main # Importar el juego de adivina la palabra
             wordguessing_main()
 
-        # elif choice == "3":
-            # print("\nIniciando el juego -Ahorcado...")
-            # from hangman import main as hangman_main # Importar el juego de ahorcado
-            # hangman_main()
+        elif choice == "3":
+            print("\nIniciando el juego -Ahorcado...")
+            from hangman import main as hangman_main # Importar el juego de ahorcado
+            hangman_main()
 
         elif choice == "4":
             print("\nIniciando el juego -Número 21...")
