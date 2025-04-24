@@ -2,6 +2,7 @@
 def main_menu():
     while True:
         print("\nBienvenido al emulador de videojuegos")
+        print("Elige un juego para jugar:")
         print("\n==Menu principal==")
         print("1. Adivina el número")
         print("2. Adivina la palabra")
@@ -9,7 +10,7 @@ def main_menu():
         print("4. Número 21")
         print("5. Salir")
 
-        choice = input("> ").strip()
+        choice = input("\n> ").strip()
 
         if choice == "1":
             print("\nIniciando el juego -Adivina el número...")
@@ -21,10 +22,10 @@ def main_menu():
             from Juego2 import main as Juego2_main # Importar el juego de adivina la palabra
             Juego2_main()
 
-        elif choice == "3":
-            print("\nIniciando el juego -Ahorcado...")
-            from hangman import main as hangman_main # Importar el juego de ahorcado
-            hangman_main()
+        # elif choice == "3":
+            # print("\nIniciando el juego -Ahorcado...")
+            # from hangman import main as hangman_main # Importar el juego de ahorcado
+            # hangman_main()
 
         elif choice == "4":
             print("\nIniciando el juego -Número 21...")
@@ -40,3 +41,4 @@ def main_menu():
 
 if __name__ == "__main__":
     main_menu()
+# Fin del menú principal
