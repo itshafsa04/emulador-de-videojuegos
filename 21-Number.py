@@ -142,7 +142,7 @@ def main():
             if not start_game_vs_player():
                 break
         else:
-            print("Opción no válida. Por favor, selecciona '1' o '2' gracias.")
+            print("Opción no válida. Por favor, selecciona '1' o '2'")
 
 if __name__ == "__main__":
     main()
