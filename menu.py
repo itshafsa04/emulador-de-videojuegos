@@ -28,8 +28,8 @@ def main_menu():
 
         elif choice == "4":
             print("\nIniciando el juego -Número 21...")
-            from 21-Number import main as 21-number_main # Importar el juego de número 21
-            21-Number_main()
+            from Number21 import main as Number21_main # Importar el juego de número 21
+            Number21_main()
         
         elif choice == "5":
             print("\nSaliendo del emulador... ¡Gracias por jugar!")
