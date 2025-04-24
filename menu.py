@@ -14,7 +14,7 @@ def main_menu():
 
         if choice == "1":
             print("\nIniciando el juego -Adivina el número...")
-            from number import main as number_main # Importar el juego de adivina el número
+            from number import main_menu as number_main # Importar el juego de adivina el número
             number_main()
 
         elif choice == "2":
@@ -24,7 +24,7 @@ def main_menu():
 
         elif choice == "3":
             print("\nIniciando el juego -Ahorcado...")
-            from hangman import main as hangman_main # Importar el juego de ahorcado
+            from hangman import menu_principal as hangman_main # Importar el juego de ahorcado
             hangman_main()
 
         elif choice == "4":
