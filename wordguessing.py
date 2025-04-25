@@ -108,7 +108,12 @@ def la_ruleta():
     print("\n")
 
     # Pedir al usuario que adivine la palabra completa
-    guess = input("\nAdivina la palabra completa: ").strip().lower()
+    while True:
+        guess = input("\nAdivina la palabra completa: ").strip().lower()
+        if not guess.isalpha() or len(guess) != len(word):
+            print("\nEntrada no válida. Por favor, introduce una palabra de la longitud correcta.")
+            continue
+        break
 
     if guess == word:
         print(f"\n¡Felicidades {name}, has Ganado!")
