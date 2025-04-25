@@ -1,5 +1,5 @@
 # Emulador-de-videojuegos
-Emulador de videojuegos que contiene 4 juegos en Python
+Emulador de videojuegos que contiene 4 juegos en Python.
 
 # Juego de adivinar la palabra
 ==Adivina la palabra==
