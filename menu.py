@@ -9,12 +9,9 @@ def main_menu():
         print("3. Ahorcado")
         print("4. Número 21")
         print("5. Salir")
-        print("\n===================")
-        # Solicitar al usuario que elija una opción
-        print("Por favor, elige una opción (1-5):")
 
         choice = input("\n> ").strip()
-        
+
         if choice == "1":
             print("\nIniciando el juego -Adivina el número...")
             from number import main_menu as number_main # Importar el juego de adivina el número
@@ -44,4 +41,4 @@ def main_menu():
 
 if __name__ == "__main__":
     main_menu()
-# Fin del menú principal
+# Fin del menú principal.
