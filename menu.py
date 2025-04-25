@@ -1,7 +1,10 @@
 # Creación menu de emulador de videojuegos
 def main_menu():
     while True:
+
+        # Mostrar el menú principal
         print("\nBienvenido al emulador de videojuegos")
+        print("===================================")
         print("Elige un juego para jugar:")
         print("\n==Menu principal==")
         print("1. Adivina el número")
@@ -9,6 +12,9 @@ def main_menu():
         print("3. Ahorcado")
         print("4. Número 21")
         print("5. Salir")
+        print("\nPor favor, elige una opción (1-5):")
+        print("===================================")
+        # Solicitar al usuario que elija una opción
 
         choice = input("\n> ").strip()
 
@@ -35,10 +41,11 @@ def main_menu():
         elif choice == "5":
             print("\nSaliendo del emulador... ¡Gracias por jugar!")
             break
-        
+
+        # Comprobar si la opción es válida
         else:
             print("\nOpción no válida. Por favor, elige una opción del menú.")
 
 if __name__ == "__main__":
     main_menu()
-# Fin del menú principal
+# Fin del menú principal.
