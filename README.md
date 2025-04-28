@@ -14,6 +14,6 @@ Este juego se basa en que el usuario deve adivinar una palabra oculta letra por 
 - El usuario puede jugar nuevamente después de terminar la partisa.
   
 ## Instalación
-Para ejecutar este juego, neesitar tener Python instalado en tu sistema. Puedes descargar Pythos desde python.org.
+Para ejecutar este juego, neesitar tener Python instalado en tu sistema. Puedes descargar Python desde python.org.
 
 1. Clona este repositorio o descarga el archivo 'wordguessing.py'.
