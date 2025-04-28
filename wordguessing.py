@@ -122,7 +122,7 @@ def la_ruleta():
     else:
         print(f"\nLo siento {name}, has perdido.")
         print(f"La palabra era: {word}")
-    
+
     # Preguntar al usuario si desea jugar de nuevo o salir
     reiniciar_juego()
 
