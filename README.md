@@ -1,6 +1,10 @@
-# Emulador-de-videojuegos
-Emulador de videojuegos que contiene 4 juegos en Python.
-
+# Emulador de videojuegos
+Este emulador de videojuegos contiene 4 juegos:
+    - Adivina el número
+    - Adivina la palabra
+    - Número 21
+    - Ahorcado
+ 
 ## Juego de adivinar la palabra
 ==Adivina la palabra==
 
