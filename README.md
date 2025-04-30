@@ -1,49 +1,55 @@
- ## Juego 2.
-==21Number==
+# Juego del Número 21 (21Number)
 
 ## Descripción 
-El juego del número 21 es un juego de estrategia en el que los jugadores intentan alcazar exactamente 21 puntos. Si un jugador se pasa de 21 o dice el número 21, pierde el juego. Este proyecto implementa el juego en Python, permitiendo jugar contra la máquina o entre dos jugadores.
+El **Juego del Número 21** es un juego de estrategia en el que los jugadores intentan alcanzar exactamente 21 puntos. Si un jugador se pasa de 21 o dice el número 21, pierde el juego. Este proyecto implementa el juego en Python, permitiendo jugar contra la máquina o entre dos jugadores.
 
-## Modos de juego
- En este juego hay dos modos de juego que son los siguientes:
+## Modos de Juego
+El juego ofrece dos modos principales:
 
-- **Contra la máquina** : 
-1. El jugador puede elegir tomar el primer turno (F) o el segundo turno (S).
-2. La máquina seguirá una estrategia para intentar ganar el juego.
-3. El jugador debe ingresar números consecutivos en su turno.
-4. El juego continúa hasta que uno de los jugadores ingrese el número 21.
+### 1. Contra la Máquina
+- El jugador puede elegir tomar el primer turno (`F`) o el segundo turno (`S`).
+- La máquina utiliza una estrategia para intentar ganar el juego.
+- El jugador debe ingresar números consecutivos en su turno.
+- El juego continúa hasta que uno de los jugadores diga el número 21.
 
-- **Entre dos jugadores** :
-1. Cada jugador toma turnos para ingresar números consecutivos.
-2. El jugador que ingrese el número 21 pierde el juego.
-3. Si los números ingresados no son consecutivos, el jugador pierde el juego.
+### 2. Entre Dos Jugadores
+- Dos jugadores toman turnos para ingresar números consecutivos.
+- El jugador que diga el número 21 pierde el juego.
+- Si los números ingresados no son consecutivos, el jugador pierde automáticamente.
 
-## Cómo jugar
-1. Ejecuta el script numero_21.py
-2. selecciona el modo de juego:
-  - 1 para jugar contra la máquina.
-  - 2 para jugar entre dos personas.
+## Cómo Jugar
+1. Ejecuta el script `numero_21.py`.
+2. Selecciona el modo de juego:
+   - `1` para jugar contra la máquina.
+   - `2` para jugar entre dos personas.
 3. Sigue las instrucciones en pantalla para ingresar los números.
 4. Disfruta del juego y trata de no perder.
 
+## Características Adicionales
+- **Modo al Mejor de 3**: Los jugadores pueden competir al mejor de 3 partidas.
+- **Validación de Entradas**: El juego valida que los números ingresados sean consecutivos y estén dentro del rango permitido.
+- **Reinicio o Salida**: Al final de cada partida, los jugadores pueden optar por reiniciar el juego o salir.
+- **Reglas Avanzadas**: Si un jugador elige ingresar solo 1 número en su turno, en el siguiente turno deberá ingresar 2 o 3 números.
+
 ## Código
-El código del juego está dividida en varias funciones:
-- **nearest_multiple(num): Devuelve el múltiplo más cercano de 4.**
-- **lose(): Termina el juego con un mensaje de derrota yda la opción de reiniciar.**
-- **check_consecutive(sequence):Verifica si los números son consecutivos.**
-- **get_valid_input(prompt,min_val,max_val):Valida la entrada del usuario.**
-- **player_turn(sequence, last, player_name): Maneja el turno del jugador.**
--  **computer_turn(sequence, last, comp_count): Maneja el turno de la máquina.**
-- **start_game_vs_computer(): Juego contra la máquina.**
-- **start_game_vs_player(): Juego entre dos jugadores.**
-- **reiniciar_o_salir(): Pregunta al usuario si desea reiniciar o salir.**
-- **main(): Bucle principal del juego.**
+El código del juego está organizado en varias funciones para facilitar su comprensión y mantenimiento:
 
-
-
-
+- **`nearest_multiple(num)`**: Devuelve el múltiplo más cercano de 4.
+- **`lose()`**: Termina el juego con un mensaje de derrota y da la opción de reiniciar.
+- **`check_consecutive(sequence)`**: Verifica si los números ingresados son consecutivos.
+- **`get_valid_input(prompt, min_val, max_val)`**: Valida la entrada del usuario.
+- **`player_turn(sequence, last, player_name, previous_count=None)`**: Maneja el turno del jugador, considerando las reglas avanzadas.
+- **`computer_turn(sequence, last, comp_count)`**: Maneja el turno de la máquina.
+- **`start_game_vs_computer()`**: Implementa el modo de juego contra la máquina.
+- **`start_game_vs_player()`**: Implementa el modo de juego entre dos jugadores.
+- **`reiniciar_o_salir()`**: Pregunta al usuario si desea reiniciar el juego o salir.
+- **`game_description()`**: Muestra una descripción detallada del juego.
+- **`main()`**: Bucle principal del juego que gestiona el menú y las opciones seleccionadas.
 
 ## Instalación
-Para ejecutar este juego, neesitar tener Python instalado en tu sistema. Puedes descargar Python desde python.org.
+Para ejecutar este juego, necesitas tener Python instalado en tu sistema. Puedes descargar Python desde [python.org](https://www.python.org/).
 
-1. Clona este repositorio o descarga el archivo 'wordguessing.py'.
+### Pasos de Instalación:
+1. Clona este repositorio o descarga el archivo `numero_21.py`:
+   ```bash
+   git clone https://github.com/tu_usuario/emulador-de-videojuegos.git
