@@ -144,13 +144,26 @@ def reiniciar_o_salir():
         else:
             print("Opción no válida. Por favor, selecciona '1' o '2'.")
 
+# Muestra la descripción del juego
+def game_description():
+    print("\n=== Descripción del Juego ===")
+    print("El juego del número 21 es un juego de estrategia en el que los jugadores intentan alcanzar exactamente 21 puntos.")
+    print("Si un jugador se pasa de 21 o dice el número 21, pierde el juego.")
+    print("\n=== Cómo Jugar ===")
+    print("1. Puedes jugar contra la máquina o contra otro jugador.")
+    print("2. En cada turno, puedes ingresar entre 1 y 3 números consecutivos.")
+    print("3. El jugador que diga el número 21 pierde.")
+    print("4. Si los números ingresados no son consecutivos, el jugador pierde automáticamente.")
+    print("=============================\n")
+
 # Bucle principal del juego
 def main():
     while True:
         print("\n=== Menú Principal ===")
         print("1. Jugar contra la máquina")
         print("2. Jugar entre dos personas")
-        print("3. Salir del juego")
+        print("3. Descripción del juego")
+        print("4. Salir del juego")
         print("=======================")
         mode = input("Selecciona una opción: ").strip()
 
@@ -161,11 +174,14 @@ def main():
             if not start_game_vs_player():
                 continue
         elif mode == "3":
+            game_description()
+        elif mode == "4":
             print("Gracias por jugar. ¡Hasta la próxima!")
             break
         else:
-            print("Opción no válida. Por favor, selecciona una opción del 1 al 3.")
+            print("Opción no válida. Por favor, selecciona una opción del 1 al 4.")
 
 if __name__ == "__main__":
     main()
 # Fin del juego del número 21
+# Fin del código
