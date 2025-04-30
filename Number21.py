@@ -147,20 +147,25 @@ def reiniciar_o_salir():
 # Bucle principal del juego
 def main():
     while True:
-        print("Selecciona el modo de juego:")
+        print("\n=== Menú Principal ===")
         print("1. Jugar contra la máquina")
         print("2. Jugar entre dos personas")
-        mode = input("> ").strip()
+        print("3. Salir del juego")
+        print("=======================")
+        mode = input("Selecciona una opción: ").strip()
 
         if mode == "1":
             if not start_game_vs_computer():
-                break
+                continue
         elif mode == "2":
             if not start_game_vs_player():
-                break
+                continue
+        elif mode == "3":
+            print("Gracias por jugar. ¡Hasta la próxima!")
+            break
         else:
-            print("Opción no válida. Por favor, selecciona '1' o '2'")
+            print("Opción no válida. Por favor, selecciona una opción del 1 al 3.")
 
 if __name__ == "__main__":
     main()
-# Fin del código
+# Fin del juego del número 21
