@@ -1,12 +1,17 @@
 import random
-from collections import Counter
 
-# Lista de palabras en inglés
-someWords = '''apple banana mango strawberry 
-orange grape pineapple apricot lemon coconut watermelon 
-cherry papaya berry peach lychee muskmelon'''
+# List of fruits and animals
+frutas = [
+    'apple', 'banana', 'cherry', 'date', 'fig', 'grape', 'kiwi', 'lemon', 'mango', 'nectarine',
+    'orange', 'papaya', 'quince', 'raspberry', 'strawberry', 'tangerine', 'watermelon'
+]
 
-someWords = someWords.split(' ')
+animales = [
+    'cat', 'dog', 'elephant', 'giraffe', 'hippopotamus', 'kangaroo', 'lion', 'monkey', 'penguin', 'rabbit',
+    'squirrel', 'tiger', 'zebra', 'alligator', 'bear', 'cheetah', 'dolphin', 'flamingo', 'gorilla', 'hedgehog'
+]
+
+someWords = frutas + animales
 historial_juegos = []
 
 def elegir_palabra(dificultad):
@@ -25,13 +30,13 @@ def mostrar_palabra(palabra, letras_adivinadas):
     print(' '.join(display))
 
 def obtener_adivinanza():
-    """Obtiene una letra adivinada del usuario."""
+    """Obtiene una letra o palabra adivinada del usuario."""
     while True:
-        adivinanza = input('Enter a letter to guess: ').lower()
-        if len(adivinanza) != 1:
-            print('Enter only a SINGLE letter')
-        elif not adivinanza.isalpha():
+        adivinanza = input('Enter a letter or the entire word to guess: ').lower()
+        if len(adivinanza) == 1 and not adivinanza.isalpha():
             print('Enter only a LETTER')
+        elif len(adivinanza) > 1 and not adivinanza.isalpha():
+            print('Enter only LETTERS')
         else:
             return adivinanza
 
@@ -40,39 +45,49 @@ def jugar(dificultad):
     palabra = elegir_palabra(dificultad)
     letras_adivinadas = set()
     oportunidades = len(palabra) + 2
-    print('Guess the word! HINT: word is a name of a fruit')
+    print('Guess the word! HINT: word is a name of a fruit or an animal')
     mostrar_palabra(palabra, letras_adivinadas)
 
     while oportunidades > 0:
         adivinanza = obtener_adivinanza()
-        if adivinanza in letras_adivinadas:
-            print('You have already guessed that letter')
-            continue
+        if len(adivinanza) == 1:
+            if adivinanza in letras_adivinadas:
+                print('You have already guessed that letter')
+                continue
 
-        letras_adivinadas.add(adivinanza)
-        if adivinanza in palabra:
-            print(f'Good guess! {adivinanza} is in the word.')
+            letras_adivinadas.add(adivinanza)
+            if adivinanza in palabra:
+                print(f'Good guess! {adivinanza} is in the word.')
+            else:
+                print(f'Sorry, {adivinanza} is not in the word.')
+                oportunidades -= 1
+
+            mostrar_palabra(palabra, letras_adivinadas)
+
+            if all(char in letras_adivinadas for char in palabra):
+                print('Congratulations, You won!')
+                historial_juegos.append({'palabra': palabra, 'resultado': 'ganado'})
+                break
         else:
-            print(f'Sorry, {adivinanza} is not in the word.')
-            oportunidades -= 1
+            if adivinanza == palabra:
+                print('Congratulations, You won!')
+                historial_juegos.append({'palabra': palabra, 'resultado': 'ganado'})
+                break
+            else:
+                print(f'Sorry, {adivinanza} is not the word.')
+                oportunidades -= 1
 
-        mostrar_palabra(palabra, letras_adivinadas)
-
-        if all(char in letras_adivinadas for char in palabra):
-            print('Congratulations, You won!')
-            historial_juegos.append({'palabra': palabra, 'resultado': 'ganado'})
-            break
-    else:
-        print(f'You lost! The word was {palabra}')
-        historial_juegos.append({'palabra': palabra, 'resultado': 'perdido'})
+        if oportunidades == 0:
+            print(f'You lost! The word was {palabra}')
+            historial_juegos.append({'palabra': palabra, 'resultado': 'perdido'})
 
 def mostrar_instrucciones():
     """Muestra las instrucciones del juego."""
     print("\nInstrucciones del Juego:")
-    print("1. El objetivo es adivinar la palabra secreta letra por letra.")
+    print("1. El objetivo es adivinar la palabra secreta letra por letra o adivinando la palabra completa.")
     print("2. Tienes un número limitado de oportunidades para adivinar.")
     print("3. Cada vez que adivinas una letra correctamente, se revela en la palabra.")
-    print("4. Si adivinas todas las letras antes de que se acaben las oportunidades, ganas.")
+    print("4. Si adivinas todas las letras o la palabra completa antes de que se acaben las oportunidades, ganas.")
     print("5. Si se acaban las oportunidades antes de adivinar la palabra completa, pierdes.")
 
 def mostrar_historial():
