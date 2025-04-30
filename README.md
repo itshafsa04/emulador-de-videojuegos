@@ -28,6 +28,7 @@ El juego ofrece dos modos principales:
 ## Características Adicionales
 - **Validación de Entradas**: El juego valida que los números ingresados sean consecutivos y estén dentro del rango permitido.
 - **Reinicio o Salida**: Al final de cada partida, los jugadores pueden optar por reiniciar el juego o salir.
+
 ## Código
 El código del juego está organizado en varias funciones para facilitar su comprensión y mantenimiento:
 
@@ -42,11 +43,3 @@ El código del juego está organizado en varias funciones para facilitar su comp
 - **`reiniciar_o_salir()`**: Pregunta al usuario si desea reiniciar el juego o salir.
 - **`game_description()`**: Muestra una descripción detallada del juego.
 - **`main()`**: Bucle principal del juego que gestiona el menú y las opciones seleccionadas.
-
-## Instalación
-Para ejecutar este juego, necesitas tener Python instalado en tu sistema. Puedes descargar Python desde [python.org](https://www.python.org/).
-
-### Pasos de Instalación:
-1. Clona este repositorio o descarga el archivo `numero_21.py`:
-   ```bash
-   git clone https://github.com/tu_usuario/emulador-de-videojuegos.git
