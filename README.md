@@ -28,8 +28,6 @@ El juego ofrece dos modos principales:
 ## Características Adicionales
 - **Validación de Entradas**: El juego valida que los números ingresados sean consecutivos y estén dentro del rango permitido.
 - **Reinicio o Salida**: Al final de cada partida, los jugadores pueden optar por reiniciar el juego o salir.
-- **Reglas Avanzadas**: Si un jugador elige ingresar solo 1 número en su turno, en el siguiente turno deberá ingresar 2 o 3 números.
-
 ## Código
 El código del juego está organizado en varias funciones para facilitar su comprensión y mantenimiento:
 
