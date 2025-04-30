@@ -43,16 +43,16 @@ El juego del número 21 es un juego de estrategia en el que los jugadores intent
 
 ## Código
 El código del juego está dividida en varias funciones:
-- ## nearest_multiple(num): Devuelve el múltiplo más cercano de 4.
-- ## lose(): Termina el juego con un mensaje de derrota yda la opción de reiniciar.
-- ## check_consecutive(sequence):Verifica si los números son consecutivos.
-- ## get_valid_input(prompt,min_val,max_val):Valida la entrada del usuario.
-- ## player_turn(sequence, last, player_name): Maneja el turno del jugador.
-- ## computer_turn(sequence, last, comp_count): Maneja el turno de la máquina.
-- ## start_game_vs_computer(): Juego contra la máquina.
-- ## start_game_vs_player(): Juego entre dos jugadores.
-- ## reiniciar_o_salir(): Pregunta al usuario si desea reiniciar o salir.
-- ## main(): Bucle principal del juego.
+- **nearest_multiple(num): Devuelve el múltiplo más cercano de 4.**
+- **lose(): Termina el juego con un mensaje de derrota yda la opción de reiniciar.**
+- **check_consecutive(sequence):Verifica si los números son consecutivos.**
+- **get_valid_input(prompt,min_val,max_val):Valida la entrada del usuario.**
+- **player_turn(sequence, last, player_name): Maneja el turno del jugador.**
+-  **computer_turn(sequence, last, comp_count): Maneja el turno de la máquina.**
+- **start_game_vs_computer(): Juego contra la máquina.**
+- **start_game_vs_player(): Juego entre dos jugadores.**
+- **reiniciar_o_salir(): Pregunta al usuario si desea reiniciar o salir.**
+- **main(): Bucle principal del juego.**
 
 
 
