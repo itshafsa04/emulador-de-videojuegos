@@ -21,10 +21,39 @@ El juego del número 21 es un juego de estrategia en el que los jugadores intent
 
 ## Modos de juego
  En este juego hay dos modos de juego que son los siguientes:
-- **Contra la máquina**: 
-El jugador elige si quiere tomar el primer o segundo turno. La máquina juega automáticamente siguiendo la lógica del juego.
+
+- **Contra la máquina** : 
+1. El jugador puede elegir tomar el primer turno (F) o el segundo turno (S).
+2. La máquina seguirá una estrategia para intentar ganar el juego.
+3. El jugador debe ingresar números consecutivos en su turno.
+4. El juego continúa hasta que uno de los jugadores ingrese el número 21.
+
 - **Entre dos jugadores** :
-Dos jugadores alternan turnos ingresando números consecutivos hasta que uno de ellos alcanza 21 puntos o se pasa de 21.
+1. Cada jugador toma turnos para ingresar números consecutivos.
+2. El jugador que ingrese el número 21 pierde el juego.
+3. Si los números ingresados no son consecutivos, el jugador pierde el juego.
+
+## Cómo jugar
+1. Ejecuta el script numero_21.py
+2. selecciona el modo de juego:
+  - 1 para jugar contra la máquina.
+  - 2 para jugar entre dos personas.
+3. Sigue las instrucciones en pantalla para ingresar los números.
+4. Disfruta del juego y trata de no perder.
+
+## Código
+El código del juego está dividida en varias funciones:
+- ## nearest_multiple(num): Devuelve el múltiplo más cercano de 4.
+- ## lose(): Termina el juego con un mensaje de derrota yda la opción de reiniciar.
+- ## check_consecutive(sequence):Verifica si los números son consecutivos.
+- ## get_valid_input(prompt,min_val,max_val):Valida la entrada del usuario.
+- ## player_turn(sequence, last, player_name): Maneja el turno del jugador.
+- ## computer_turn(sequence, last, comp_count): Maneja el turno de la máquina.
+- ## start_game_vs_computer(): Juego contra la máquina.
+- ## start_game_vs_player(): Juego entre dos jugadores.
+- ## reiniciar_o_salir(): Pregunta al usuario si desea reiniciar o salir.
+- ## main(): Bucle principal del juego.
+
 
 
 
