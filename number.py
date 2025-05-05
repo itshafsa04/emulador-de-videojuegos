@@ -22,7 +22,14 @@ def start_game():
 
     while guess_counter < chances:
         guess_counter += 1
-        my_guess = int(input('Please Enter your Guess : '))
+        my_guess = input('Please Enter your Guess: ').strip()
+
+        if not my_guess.isdigit():
+            print('You must enter a number to continue playing.')
+            guess_counter -= 1
+            continue
+
+        my_guess = int(my_guess)
 
         if my_guess == number_to_guess:
             print(f'The number is {number_to_guess} and you found it right !! in the {guess_counter} attempt')
@@ -50,4 +57,5 @@ def end_game():
         end_game()
 
 # Start the game by displaying the main menu
-main_menu()
+if __name__ == "__main__":
+    main_menu()
