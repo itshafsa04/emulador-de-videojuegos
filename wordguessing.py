@@ -72,7 +72,6 @@ def iniciar_juego():
     reiniciar_juego()
 
 # Función para el modo ruleta
-# En este modo, el usuario tiene una sola oportunidad para adivinar la palabra completa
 def la_ruleta():
     # Obtener nombre del usuario y saludar
     name = input("\n¿Cuál es tu nombre? ").strip()
