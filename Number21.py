@@ -1,13 +1,15 @@
 # Código en Python para jugar al juego del número 21
 
 # Devuelve el múltiplo más cercano de 4
-def nearest_multiple(num):
-    if num >= 4:
-        return num + (4 - (num % 4))
-    return 4
+def nearest_multiple(num, base=4):
+    """Devuelve el múltiplo más cercano del número base."""
+    if num >= base:
+        return num + (base - (num % base))
+    return base
 
 # Termina el juego con un mensaje de derrota y da la opción de reiniciar
 def lose():
+    """Muestra un mensaje de derrota y pregunta si se desea reiniciar."""
     print("\n\n¡HAS PERDIDO!")
     print("¡Mejor suerte la próxima vez!")
     while True:
@@ -22,6 +24,7 @@ def lose():
 
 # Verifica si los números son consecutivos
 def check_consecutive(sequence):
+    """Verifica si los números en la secuencia son consecutivos."""
     for i in range(1, len(sequence)):
         if (sequence[i] - sequence[i - 1]) != 1:
             return False
@@ -29,6 +32,7 @@ def check_consecutive(sequence):
 
 # Valida la entrada del usuario
 def get_valid_input(prompt, min_val, max_val):
+    """Solicita al usuario un número válido dentro de un rango."""
     while True:
         try:
             value = int(input(prompt))
@@ -41,6 +45,7 @@ def get_valid_input(prompt, min_val, max_val):
 
 # Maneja el turno del jugador
 def player_turn(sequence, last, player_name):
+    """Maneja el turno del jugador."""
     print(f"\nTurno de {player_name}.")
     num_count = get_valid_input(f"{player_name}, ¿cuántos números deseas ingresar? (1-3): ", 1, 3)
     print("Ahora ingresa los valores:")
@@ -51,17 +56,33 @@ def player_turn(sequence, last, player_name):
     print(f"Orden de entradas después del turno de {player_name}: {sequence}")
     return sequence, last
 
+# Selecciona la dificultad del juego
+def select_difficulty():
+    """Permite al usuario seleccionar la dificultad del juego."""
+    while True:
+        print("\nSelecciona la dificultad:")
+        print("1. Fácil")
+        print("2. Medio")
+        print("3. Difícil")
+        difficulty = input("> ").strip()
+        if difficulty in ["1", "2", "3"]:
+            return difficulty
+        print("Opción no válida. Por favor, selecciona una opción válida.")
+
 # Maneja el turno de la máquina
 def computer_turn(sequence, last, comp_count):
+    """Maneja el turno de la máquina."""
+    print("\nTurno de la máquina:")
     for _ in range(comp_count):
         sequence.append(last + 1)
         last += 1
-    print("Orden de entradas después del turno de la máquina:")
-    print(sequence)
+    print(f"Orden de entradas después del turno de la máquina: {sequence}")
     return sequence, last
 
-# Juego contra la máquina
+# Juego contra la máquina con dificultad
 def start_game_vs_computer():
+    """Inicia el juego contra la máquina con la dificultad seleccionada."""
+    difficulty = select_difficulty()
     sequence = []
     last = 0
     while True:
@@ -79,7 +100,13 @@ def start_game_vs_computer():
                     return lose()
                 if last == 21:
                     return lose()
-                comp_count = 4 - (len(sequence) % 4)
+                # Ajusta la estrategia de la máquina según la dificultad
+                if difficulty == "1":  # Fácil
+                    comp_count = 1
+                elif difficulty == "3":  # Difícil
+                    comp_count = 4 - (len(sequence) % 4)
+                else:  # Medio (por defecto)
+                    comp_count = 2
                 sequence, last = computer_turn(sequence, last, comp_count)
                 if last == 21:
                     print("\n\n¡FELICITACIONES!")
@@ -109,6 +136,7 @@ def start_game_vs_computer():
 
 # Juego entre dos jugadores
 def start_game_vs_player():
+    """Inicia el juego entre dos jugadores."""
     sequence = []
     last = 0
     player1 = input("Ingresa el nombre del Jugador 1: ").strip()
@@ -130,6 +158,7 @@ def start_game_vs_player():
 
 # Pregunta al usuario si desea reiniciar o salir
 def reiniciar_o_salir():
+    """Pregunta al usuario si desea reiniciar el juego o salir."""
     while True:
         print("\n¿Deseas reiniciar el juego o salir?")
         print("1. Reiniciar")
@@ -146,6 +175,7 @@ def reiniciar_o_salir():
 
 # Muestra la descripción del juego
 def game_description():
+    """Muestra una descripción del juego y sus reglas."""
     print("\n=== Descripción del Juego ===")
     print("El juego del número 21 es un juego de estrategia en el que los jugadores intentan alcanzar exactamente 21 puntos.")
     print("Si un jugador se pasa de 21 o dice el número 21, pierde el juego.")
@@ -158,6 +188,7 @@ def game_description():
 
 # Bucle principal del juego
 def main():
+    """Bucle principal del juego que muestra el menú principal."""
     while True:
         print("\n=== Menú Principal ===")
         print("1. Jugar contra la máquina")
@@ -170,7 +201,7 @@ def main():
         if mode == "1":
             if not start_game_vs_computer():
                 continue
-        elif mode == "2":                                                                                                                                           
+        elif mode == "2":
             if not start_game_vs_player():
                 continue
         elif mode == "3":
@@ -184,4 +215,4 @@ def main():
 if __name__ == "__main__":
     main()
 # Fin del juego del número 21
-# Fin del código
+# Hecho por [Iván Jiménez]
