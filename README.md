@@ -153,4 +153,3 @@ Para contribuir al proyecto, sigue estos pasos:
 - **Michael Uribe**
 - **Diana Sierra**
 - **Iván Jiménez**
-
