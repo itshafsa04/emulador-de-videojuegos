@@ -50,14 +50,19 @@ Este proyecto es un juego de adivinanza de números desarrollado en Python. El o
 ### Adivina la Palabra
 
 #### Descripción
-Este juego se basa en que el usuario debe adivinar una palabra oculta letra por letra. El juego proporciona una palabra al azar y el usuario tiene un número limitado de intentos para adivinar la palabra correcta.
+En este juego el usuario tiene que adivinar un palabra oculta escribiendo la palabra completa o letra por letra. El juego proporciona una lista de palabras al azar y el usuario tiene un número limitado de intentos para adivinar la palabra o un solo intento si esta en el modo ruleta.
 
 #### Características
-- El juego selecciona una palabra al azar de una lista predefinida.
-- El usuario tiene 12 intentos para adivinar la palabra.
+- **Modo normal**: El usuario tiene 12 intentos para adivinar la palabra letra por letra.
+- **Modo ruleta**: El usuario tiene una sola oportunidad para adivinar la palabra completa.
 - El juego muestra las letras adivinadas correctamente y los intentos restantes.
-- El usuario puede jugar nuevamente después de terminar la partida.
+- El usuario puede jugar nuevamente después de terminar una partida y puede cambiar de modo.
 
+#### Uso
+Para iniciar el juego, ejecuta el siguiente comando en la terminal:
+
+```bash
+python wordguessing.py
 
 ### Hangman
 
