@@ -19,6 +19,3 @@ En este juego el usuario tiene que adivinar un palabra oculta escribiendo la pal
 
 ### Uso
 Para iniciar el juego, ejecuta el siguiente comando en la terminal:
-
-```bash
-python wordguessing.py
