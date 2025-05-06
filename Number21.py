@@ -170,7 +170,7 @@ def main():
         if mode == "1":
             if not start_game_vs_computer():
                 continue
-        elif mode == "2":
+        elif mode == "2":                                                                                                                                           
             if not start_game_vs_player():
                 continue
         elif mode == "3":
