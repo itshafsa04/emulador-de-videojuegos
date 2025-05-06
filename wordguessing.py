@@ -1,5 +1,4 @@
 # Juego de Adivinanza de Palabras
-
 # Importar libreria random
 import random
 
