@@ -1,61 +1,73 @@
 import random
+import menu  # Importamos el menú principal del emulador
+
 
 def main_menu():
-    print("Welcome to the Number Guessing Game!")
-    print("1. Start Game")
-    print("2. Exit")
-    choice = input("Please choose an option: ")
-    if choice == '1':
-        start_game()
-    elif choice == '2':
-        print("Thank you for playing! Goodbye!")
-    else:
-        print("Invalid choice. Please try again.")
-        main_menu()
+    while True:
+        print("Welcome to the Number Guessing Game!")
+        print("1. Start Game")
+        print("2. Return to Main Menu")
+        choice = input("Please choose an option: ")
+        if choice == '1':
+            result = start_game()
+            if result == "exit":
+                break  # ← Salimos del menú del juego y volvemos al menú general
+        elif choice == '2':
+            break
+        else:
+            print("Invalid choice. Please try again.")
+
 
 def start_game():
-    print("Hi welcome to the game, This is a number guessing game.\nYou got 7 chances to guess the number. Let's start the game")
+    print("Hi welcome to the game! This is a number guessing game.")
+    print("You have 7 chances to guess the number. Let's start!")
+
 
     number_to_guess = random.randrange(100)
     chances = 7
     guess_counter = 0
 
-    while guess_counter < chances:
-        guess_counter += 1
-        my_guess = input('Please Enter your Guess: ').strip()
 
-        if not my_guess.isdigit():
-            print('You must enter a number to continue playing.')
-            guess_counter -= 1
+    while guess_counter < chances:
+        try:
+            my_guess = int(input('Please enter your guess: '))
+        except ValueError:
+            print("⚠️ Please enter a valid number.")
             continue
 
-        my_guess = int(my_guess)
+
+        guess_counter += 1
+
 
         if my_guess == number_to_guess:
-            print(f'The number is {number_to_guess} and you found it right !! in the {guess_counter} attempt')
+            print(f'🎉 Correct! The number was {number_to_guess}. You guessed it in {guess_counter} attempts!')
             break
-        elif guess_counter >= chances and my_guess != number_to_guess:
-            print(f'Oops sorry, The number is {number_to_guess} better luck next time')
+        elif guess_counter >= chances:
+            print(f'💀 Out of tries! The number was {number_to_guess}. Better luck next time.')
         elif my_guess > number_to_guess:
-            print('Your guess is higher ')
+            print('📈 Your guess is too high.')
         elif my_guess < number_to_guess:
-            print('Your guess is lesser')
+            print('📉 Your guess is too low.')
 
-    end_game()
+
+        print(f'You have {chances - guess_counter} attempts left.')
+
+
+    return end_game()  # ← devolvemos lo que diga end_game()
+
+
+
 
 def end_game():
-    print("Game Over!")
-    print("1. Play Again")
-    print("2. Return to Main Menu")
-    choice = input("Please choose an option: ")
-    if choice == '1':
-        start_game()
-    elif choice == '2':
-        main_menu()
-    else:
-        print("Invalid choice. Please try again.")
-        end_game()
-
-# Start the game by displaying the main menu
-if __name__ == "__main__":
-    main_menu()
+    while True:
+        print("\nGame Over!")
+        print("1. Play Again")
+        print("2. Return to Main Menu")
+        choice = input("Please choose an option: ")
+        if choice == '1':
+            return start_game()  # ← sigue jugando
+        elif choice == '2':
+            menu.main_menu()  # Vuelve correctamente al **menú principal de todos los juegos**
+            return  # 🔹 Detiene la ejecución para evitar el doble menú
+        else:
+            print("Invalid choice. Please try again.")
