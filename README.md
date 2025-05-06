@@ -59,9 +59,7 @@ En este juego el usuario tiene que adivinar un palabra oculta escribiendo la pal
 - El usuario puede jugar nuevamente después de terminar una partida y puede cambiar de modo.
 
 #### Uso
-Para iniciar el juego, ejecuta el siguiente comando en la terminal:
-- ```bash
-python wordguessing.py
+Para iniciar el juego, ejecuta el siguiente comando en la terminal: "```bash python wordguessing.py".
 
 ### Hangman
 
