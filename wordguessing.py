@@ -99,6 +99,7 @@ def la_ruleta():
     # Mostrar pistas
     print(f"\nPista 1: {pista_1}")
     print(f"Pista 2: {pista_2}")
+    print(f"Pista 3: La palabra tiene {len(word)} letras.")
 
     # Mostrar la palabra con letras adivinadas y guiones bajos
     print("\nPalabra: ", end=' ')
@@ -154,3 +155,11 @@ def seleccionar_modo():
 # Función principal para iniciar el juego
 if __name__ == "__main__":
     seleccionar_modo()
+
+        # if (len(guess) > 1):
+        #     print("modo ruleta")
+        #     #TODO: jugar en modo ruleta
+
+        # else:
+        #     print("modo normal")
+        #     #TODO: jugar en modo normal
