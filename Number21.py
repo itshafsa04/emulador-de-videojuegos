@@ -43,43 +43,64 @@ def get_valid_input(prompt, min_val, max_val):
         except ValueError:
             print("Entrada no válida. Por favor, ingresa un número entero.")
 
-# Maneja el turno del jugador
+# Maneja el turno del jugador con validación para no exceder 21
 def player_turn(sequence, last, player_name):
     """Maneja el turno del jugador."""
     print(f"\nTurno de {player_name}.")
     num_count = get_valid_input(f"{player_name}, ¿cuántos números deseas ingresar? (1-3): ", 1, 3)
     print("Ahora ingresa los valores:")
     for _ in range(num_count):
-        value = get_valid_input("> ", last + 1, last + 3)
+        value = get_valid_input("> ", last + 1, min(last + 3, 21))  # No permite ingresar más de 21
+        if value == 21:
+            sequence.append(value)
+            print(f"Orden de entradas después del turno de {player_name}: {sequence}")
+            print(f"\n{player_name} dijo '21'. ¡{player_name} ha perdido!")
+            return sequence, value, True  # Indica que el juego terminó
         sequence.append(value)
         last = value
     print(f"Orden de entradas después del turno de {player_name}: {sequence}")
-    return sequence, last
+    return sequence, last, False  # Indica que el juego continúa
+
+# Maneja el turno de la máquina con validación para no exceder 21
+def computer_turn(sequence, last, difficulty):
+    """Maneja el turno de la máquina según la dificultad seleccionada."""
+    print("\nTurno de la máquina:")
+    if difficulty == "1":  # Fácil
+        comp_count = 1
+    elif difficulty == "2":  # Medio
+        comp_count = 2
+    elif difficulty == "3":  # Difícil
+        # Estrategia: La máquina intenta forzar al jugador a decir 21
+        comp_count = 4 - (len(sequence) % 4)
+        if comp_count == 4:
+            comp_count = 3
+
+    for _ in range(comp_count):
+        if last + 1 > 21:
+            break  # La máquina no puede exceder 21
+        sequence.append(last + 1)
+        last += 1
+        if last == 21:
+            print(f"Orden de entradas después del turno de la máquina: {sequence}")
+            print("\nLa máquina dijo '21'. ¡La máquina ha perdido!")
+            return sequence, last, True  # Indica que el juego terminó
+    print(f"Orden de entradas después del turno de la máquina: {sequence}")
+    return sequence, last, False  # Indica que el juego continúa
 
 # Selecciona la dificultad del juego
 def select_difficulty():
     """Permite al usuario seleccionar la dificultad del juego."""
     while True:
         print("\nSelecciona la dificultad:")
-        print("1. Fácil")
-        print("2. Medio")
-        print("3. Difícil")
+        print("1. Fácil - La máquina siempre dice 1 número por turno.")
+        print("2. Medio - La máquina dice 2 números por turno.")
+        print("3. Difícil - La máquina juega estratégicamente.")
         difficulty = input("> ").strip()
         if difficulty in ["1", "2", "3"]:
             return difficulty
-        print("Opción no válida. Por favor, selecciona una opción válida.")
+        print("Opción no válida. Por favor, selecciona una opción válida (1, 2 o 3).")
 
-# Maneja el turno de la máquina
-def computer_turn(sequence, last, comp_count):
-    """Maneja el turno de la máquina."""
-    print("\nTurno de la máquina:")
-    for _ in range(comp_count):
-        sequence.append(last + 1)
-        last += 1
-    print(f"Orden de entradas después del turno de la máquina: {sequence}")
-    return sequence, last
-
-# Juego contra la máquina con dificultad
+# Juego contra la máquina con dificultad aplicada
 def start_game_vs_computer():
     """Inicia el juego contra la máquina con la dificultad seleccionada."""
     difficulty = select_difficulty()
@@ -92,49 +113,36 @@ def start_game_vs_computer():
 
         if chance == "F":
             while True:
-                if last == 20:
+                sequence, last, game_over = player_turn(sequence, last, "Jugador")
+                if game_over:
                     return lose()
-                sequence, last = player_turn(sequence, last, "Jugador")
                 if not check_consecutive(sequence):
                     print("\nNo ingresaste números consecutivos.")
                     return lose()
-                if last == 21:
-                    return lose()
-                # Ajusta la estrategia de la máquina según la dificultad
-                if difficulty == "1":  # Fácil
-                    comp_count = 1
-                elif difficulty == "3":  # Difícil
-                    comp_count = 4 - (len(sequence) % 4)
-                else:  # Medio (por defecto)
-                    comp_count = 2
-                sequence, last = computer_turn(sequence, last, comp_count)
-                if last == 21:
+                sequence, last, game_over = computer_turn(sequence, last, difficulty)
+                if game_over:
                     print("\n\n¡FELICITACIONES!")
                     print("¡HAS GANADO!")
                     return reiniciar_o_salir()
 
         elif chance == "S":
-            comp_count = 1
-            while last < 20:
-                sequence, last = computer_turn(sequence, last, comp_count)
-                if last == 20:
+            while True:
+                sequence, last, game_over = computer_turn(sequence, last, difficulty)
+                if game_over:
+                    print("\n\n¡FELICITACIONES!")
+                    print("¡HAS GANADO!")
+                    return reiniciar_o_salir()
+                sequence, last, game_over = player_turn(sequence, last, "Jugador")
+                if game_over:
                     return lose()
-                sequence, last = player_turn(sequence, last, "Jugador")
                 if not check_consecutive(sequence):
                     print("\nNo ingresaste números consecutivos.")
                     return lose()
-                near = nearest_multiple(last)
-                comp_count = near - last
-                if comp_count == 4:
-                    comp_count = 3
-            print("\n\n¡FELICITACIONES!")
-            print("¡HAS GANADO!")
-            return reiniciar_o_salir()
 
         else:
             print("Opción no válida. Por favor, ingresa 'F' o 'S'.")
 
-# Juego entre dos jugadores
+# Juego entre dos jugadores con validación para no exceder 21
 def start_game_vs_player():
     """Inicia el juego entre dos jugadores."""
     sequence = []
@@ -145,13 +153,11 @@ def start_game_vs_player():
 
     while True:
         print(f"\nTurno de {current_player}.")
-        sequence, last = player_turn(sequence, last, current_player)
+        sequence, last, game_over = player_turn(sequence, last, current_player)
+        if game_over:
+            return lose()
         if not check_consecutive(sequence):
             print(f"\n{current_player}, no ingresaste números consecutivos.")
-            print(f"¡{current_player} ha perdido!")
-            return lose()
-        if last == 21:
-            print(f"\n{current_player} dijo '21'.")
             print(f"¡{current_player} ha perdido!")
             return lose()
         current_player = player1 if current_player == player2 else player2
@@ -214,5 +220,5 @@ def main():
 
 if __name__ == "__main__":
     main()
-# Fin del juego del número 21
-# Hecho por [Iván Jiménez]
+    # Fin del juego
+    # Hecho por [Iván Jiménez]
