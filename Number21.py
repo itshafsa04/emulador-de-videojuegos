@@ -3,9 +3,9 @@
 # Devuelve el múltiplo más cercano de 4
 def nearest_multiple(num, base=4):
     """Devuelve el múltiplo más cercano del número base."""
-    if num >= base:
-        return num + (base - (num % base))
-    return base
+    if num % base == 0:
+        return num
+    return num + (base - (num % base))
 
 # Termina el juego con un mensaje de derrota y da la opción de reiniciar
 def lose():
@@ -70,10 +70,13 @@ def computer_turn(sequence, last, difficulty):
     elif difficulty == "2":  # Medio
         comp_count = 2
     elif difficulty == "3":  # Difícil
-        # Estrategia: La máquina intenta forzar al jugador a decir 21
-        comp_count = 4 - (len(sequence) % 4)
-        if comp_count == 4:
+        # Estrategia: La máquina intenta forzar al jugador a quedar en un múltiplo de 4
+        target = nearest_multiple(last + 1)  # Encuentra el siguiente múltiplo de 4
+        comp_count = target - last
+        if comp_count > 3:  # Si excede el límite de 3 números, ajusta
             comp_count = 3
+        elif comp_count < 1:  # Si no puede alcanzar el múltiplo de 4, dice 1 número
+            comp_count = 1
 
     for _ in range(comp_count):
         if last + 1 > 21:
@@ -92,8 +95,8 @@ def select_difficulty():
     """Permite al usuario seleccionar la dificultad del juego."""
     while True:
         print("\nSelecciona la dificultad:")
-        print("1. Fácil - La máquina siempre dice 1 número por turno.")
-        print("2. Medio - La máquina dice 2 números por turno.")
+        print("1. Fácil - La máquina siempre dice 1 número.")
+        print("2. Medio - La máquina dice 2 números consecutivos.")
         print("3. Difícil - La máquina juega estratégicamente.")
         difficulty = input("> ").strip()
         if difficulty in ["1", "2", "3"]:
@@ -190,6 +193,10 @@ def game_description():
     print("2. En cada turno, puedes ingresar entre 1 y 3 números consecutivos.")
     print("3. El jugador que diga el número 21 pierde.")
     print("4. Si los números ingresados no son consecutivos, el jugador pierde automáticamente.")
+    print("\n=== Niveles de Dificultad ===")
+    print("1. Fácil: La máquina siempre dice 1 número por turno.")
+    print("2. Medio: La máquina dice 2 números consecutivos por turno.")
+    print("3. Difícil: La máquina juega estratégicamente para intentar forzar al jugador a decir 21.")
     print("=============================\n")
 
 # Bucle principal del juego
