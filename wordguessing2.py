@@ -43,17 +43,17 @@ def pistas(word):
     pista_2 = f"La palabra contiene {len(word)} letras."
     return pista_1, pista_2
 
-def reiniciar_juego():
+def reiniciar_juego(name):
     'esta función sirve para reiniciar el juego'
     while True:
-        restart = input("\n¿Quieres jugar de nuevo? (si/no): ").strip().lower()
+        restart = input(f"\n¿Quieres jugar de nuevo {name}? (si/no): ").strip().lower()
         if restart == 'si':
             iniciar_juego()
             return
         elif restart == 'no':
-            print("\n¡Gracias por jugar! Hasta la próxima.")
+            print(f"\n¡Gracias por jugar {name}! Hasta la próxima.")
             return
-        else:
+            
             print("\nPor favor, responde con 'si' o 'no'.")
 
 def modo_juego(word, name):
@@ -74,7 +74,7 @@ def modo_juego(word, name):
         if failed == 0:
             print(f"\n\n¡Felicidades {name}, has Ganado!")
             print(f"La palabra era: {word}")
-            reiniciar_juego()
+            reiniciar_juego(name)
             return
 
         guess = input("\n\nAdivina una letra o la palabra completa: ").strip().lower()
@@ -111,7 +111,7 @@ def modo_juego(word, name):
         if turns == 0:
             print(f"\nLo siento {name}, has perdido.")
             print(f"La palabra era: {word}")
-            reiniciar_juego()
+            reiniciar_juego(name)
             return
 
 def modo_ruleta(word, guess, name):
@@ -123,7 +123,7 @@ def modo_ruleta(word, guess, name):
         print(f"\nLo siento {name}, has perdido.")
         print(f"La palabra era: {word}")
 
-    reiniciar_juego()
+    reiniciar_juego(name)
 
 if __name__ == "__main__":
     iniciar_juego()
