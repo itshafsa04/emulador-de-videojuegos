@@ -25,8 +25,8 @@ def main_menu():
 
         elif choice == "2":
             print("\nIniciando el juego -Adivina la palabra...")
-            from wordguessing import seleccionar_modo as wordguessing_main # Importar el juego de adivina la palabra
-            wordguessing_main()
+            from wordguessing2 import iniciar_juego as wordguessing2_main # Importar el juego de adivina la palabra
+            wordguessing2_main()
 
         elif choice == "3":
             print("\nIniciando el juego -Ahorcado...")
