@@ -129,3 +129,4 @@ if __name__ == "__main__":
     iniciar_juego()
 
 # https://www.freecodecamp.org/news/python-requirementstxt-explained/
+# Crear un archivo .txt con palabras para que respalde a la función (palabras)
