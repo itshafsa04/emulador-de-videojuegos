@@ -130,3 +130,4 @@ if __name__ == "__main__":
 
 # https://www.freecodecamp.org/news/python-requirementstxt-explained/
 # Crear un archivo .txt con palabras para que respalde a la función (palabras)
+# Probar PyInstaller y cx_Freeze
