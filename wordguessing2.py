@@ -54,7 +54,7 @@ def reiniciar_juego(name):
             print(f"\n¡Gracias por jugar {name}! Hasta la próxima.")
             return
             
-            print("\nPor favor, responde con 'si' o 'no'.")
+        print("\nPor favor, responde con 'si' o 'no'.")
 
 def modo_juego(word, name):
     'esta función detecta si el jugador está jugando en modo normal o en modo ruleta'
