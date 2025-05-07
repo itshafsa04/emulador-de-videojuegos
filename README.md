@@ -50,7 +50,7 @@ Este proyecto es un juego de adivinanza de números desarrollado en Python. El o
 ### Adivina la Palabra
 
 #### Descripción
-En este juego el usuario tiene que adivinar un palabra oculta escribiendo la palabra completa o letra por letra. El juego proporciona una lista de palabras al azar y el usuario tiene un número limitado de intentos para adivinar la palabra o un solo intento si esta en el modo ruleta.
+En este juego el usuario tiene que adivinar un palabra oculta escribiendo la palabra completa o letra por letra. El juego proporciona una lista de palabras al azar y el usuario tiene un número limitado de intentos para adivinar la palabra o un solo intento si escribe la palabra completa.
 
 #### Características
 - **Modo normal**: El usuario tiene 12 intentos para adivinar la palabra letra por letra.
