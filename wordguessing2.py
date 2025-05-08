@@ -32,7 +32,7 @@ def reglas():
     'esta función muestra las reglas del juego'
     print(f"\n\nAdivina la palabra: ")
     print("\n==Reglas del juego==")
-    print("· Tienes 12 intentos para adivinar la palabra.")
+    print(f"· Tienes {MAX_TURNS} intentos para adivinar la palabra.")
     print("· Puedes adivinar una letra o la palabra completa.")
     print("· Si adivinas la palabra, ganas.")
     print("· Si no adivinas la palabra, pierdes.")
@@ -63,8 +63,8 @@ def modo_juego(word, name, MAX_TURNS):
     'esta función detecta si el jugador está jugando en modo normal o en modo ruleta'
     'estos son los turnos que tiene el jugador para adivinar la palabra'
     guesses = ''
-    MAX_TURNS
-    while MAX_TURNS > 0:
+    turns = MAX_TURNS
+    while turns > 0:
         print("\nPalabra: ", end=' ')
         failed = 0
         for char in word:
@@ -97,9 +97,9 @@ def modo_juego(word, name, MAX_TURNS):
 
             'si el jugador introduce una letra que no está en la palabra, se le resta un intento'
             if guess not in word:
-                MAX_TURNS -= 1
+                turns -= 1
                 print("\nIncorrecta")
-                print(f"Te quedan {MAX_TURNS} intentos.")
+                print(f"Te quedan {turns} intentos.")
             else:
                 print("\nCorrecta")
         
@@ -111,7 +111,7 @@ def modo_juego(word, name, MAX_TURNS):
         else:
             print("\nEntrada no válida. Por favor, introduce una letra o la palabra completa.")
 
-        if MAX_TURNS == 0:
+        if turns == 0:
             print(f"\nLo siento {name}, has perdido.")
             print(f"La palabra era: {word}")
             reiniciar_juego()

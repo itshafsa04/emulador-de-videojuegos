@@ -12,7 +12,7 @@ def iniciar_juego():
     print(f"\nPista 1: {pista_1}")
     print(f"Pista 2: {pista_2}")
 
-    modo_juego(word, name)
+    modo_juego(word, name, MAX_TURNS)
 
 def palabras():
     try:
@@ -54,7 +54,7 @@ def reiniciar_juego(name):
 def mostrar_palabra(word, guesses):
     return ' '.join([char if char in guesses else '_' for char in word])
 
-def modo_juego(word, name):
+def modo_juego(word, name, MAX_TURNS):
     guesses = set()
     turns = MAX_TURNS
     while turns > 0:
@@ -100,7 +100,7 @@ def modo_ruleta(word, guess, name):
     if guess == word:
         print(f"\n¡Felicidades {name}, adivinaste la palabra!")
         reiniciar_juego(name)
-    else:
+    else: 
         print(f"\nIncorrecto. La palabra era: {word}")
 
     reiniciar_juego(name)
