@@ -1,6 +1,9 @@
 # Libreria RandomWords para obtener palabras aleatorias
 from random_word import RandomWords
 
+# Turnos máximos
+MAX_TURNS = 12
+
 # Funciones
 def iniciar_juego():
 
@@ -18,7 +21,7 @@ def iniciar_juego():
     print(f"Pista 2: {pista_2}")
 
     'aqui se detecta en que modo esta jugando el jugador'
-    modo_juego(word, name)
+    modo_juego(word, name, MAX_TURNS)
 
 def palabras():
     'esta función obtiene una palabra aleatoria de la librería RandomWords'
@@ -56,12 +59,12 @@ def reiniciar_juego():
         else:
             print("\nPor favor, responde con 'si' o 'no'.")
 
-def modo_juego(word, name):
+def modo_juego(word, name, MAX_TURNS):
     'esta función detecta si el jugador está jugando en modo normal o en modo ruleta'
     'estos son los turnos que tiene el jugador para adivinar la palabra'
     guesses = ''
-    turns = 12
-    while turns > 0:
+    MAX_TURNS
+    while MAX_TURNS > 0:
         print("\nPalabra: ", end=' ')
         failed = 0
         for char in word:
@@ -94,9 +97,9 @@ def modo_juego(word, name):
 
             'si el jugador introduce una letra que no está en la palabra, se le resta un intento'
             if guess not in word:
-                turns -= 1
+                MAX_TURNS -= 1
                 print("\nIncorrecta")
-                print(f"Te quedan {turns} intentos.")
+                print(f"Te quedan {MAX_TURNS} intentos.")
             else:
                 print("\nCorrecta")
         
@@ -108,7 +111,7 @@ def modo_juego(word, name):
         else:
             print("\nEntrada no válida. Por favor, introduce una letra o la palabra completa.")
 
-        if turns == 0:
+        if MAX_TURNS == 0:
             print(f"\nLo siento {name}, has perdido.")
             print(f"La palabra era: {word}")
             reiniciar_juego()
