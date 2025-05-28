@@ -1,2 +1,1 @@
-# Añadir las libreria que uso para mi código
-# Documentar en el README.md como crear entornos virtuales.
+random_word>=1.0.13

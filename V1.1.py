@@ -1,26 +1,39 @@
 # Librería de palabras randoms
+import csv
+import random
 from random_word import RandomWords
 
-#Constantes del juego
+# Constantes
+"""
+VARIABLES:
+MAX_TURNS: Número máximo de intentos permitidos.
+MSG_BIENVENIDA: Mensaje de bienvenida al jugador.
+MSG_REGLAS: Mensaje que contiene las reglas del juego.
+"""
 MAX_TURNS = 12
 MSG_BIENVENIDA = "Hola {}, bienvenido al juego de adivinar la palabra."
 MSG_REGLAS = "\n==Reglas del juego==\n· Tienes {} intentos para adivinar la palabra.\n· Puedes adivinar una letra o la palabra completa.\n· Recuerda que no puedes usar números ni caracteres especiales.\n ·Las palabras estan en inglés. \n====================\n\n¡Buena suerte {}!\n"
 
 # Funciones
-def palabras():
+def obtener_palabra():
     """
     Obtiene un palabra aleatoria usando la librería RandomWords.
     Si falla, devuelve una palbra por defecto.
     """
     try:
         word = RandomWords().get_random_word()
-        if word:
-            return word
-        else:
-            raise ValueError("No se pudo obtener una palabra aleatoria.")
+
+        if not word:
+            print ("Error: No se pudo obtener una palabra aleatoria de RandomWords. Usando archivo de respaldo.")
+            with open('randomwords_backup.csv', newline='') as f:
+                reader = csv.DictReader(f)
+                words = [row['word'] for row in reader]
+            return random.choice(words)
+        return word
+    
     except Exception as e:
         print(f"Error al obtener la palabra: {e}")
-        return "palabra"
+        raise 
 
 def reglas(name):
     """
@@ -55,7 +68,7 @@ def iniciar_juego():
     name = input("¿Cuál es tu nombre? ")
     print(MSG_BIENVENIDA.format(name))
 
-    word = palabras()
+    word = obtener_palabra()
     reglas(name)
     pista_1, pista_2 = pistas(word)
     print(f"\nPista 1: {pista_1}")
@@ -73,11 +86,10 @@ def reiniciar_juego(name):
         if restart == 'si':
             iniciar_juego()
             return
-        elif restart == 'no':
+        if restart == 'no':
             print(f"\n¡Gracias por jugar {name}! Hasta la próxima.")
             return
-        else:
-            print("\nPor favor, responde con 'si' o 'no'.")
+        print("\nPor favor, responde con 'si' o 'no'.")
 
 def modo_juego(word, name):
     """
