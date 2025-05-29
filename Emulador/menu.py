@@ -25,8 +25,8 @@ def main_menu():
 
         elif choice == "2":
             print("\nIniciando el juego -Adivina la palabra...")
-            from prueba1 import iniciar_juego as prueba_main # Importar el juego de adivina la palabra
-            prueba_main()
+            from V2 import iniciar_juego as V2_main # Importar el juego de adivina la palabra
+            V2_main()
 
         elif choice == "3":
             print("\nIniciando el juego -Ahorcado...")

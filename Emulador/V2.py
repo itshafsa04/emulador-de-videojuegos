@@ -33,7 +33,7 @@ def obtener_palabra():
     
     except Exception as e:
         print(f"Error al obtener la palabra: {e}")
-        raise 
+        raise
 
 def reglas(name):
     """
@@ -108,7 +108,7 @@ def modo_juego(word, name):
             print(f"\n¡Felicidades {name}, adivinaste la palabra!")
             reiniciar_juego(name)
             return
-
+        
         guess = input("\nAdivina una letra o la palabra completa: ").strip().lower()
 
         if not validar_entrada(guess, 'letra' if len(guess) == 1 else 'palabra'):
